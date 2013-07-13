@@ -1,0 +1,12 @@
+###########################################
+# Root
+#
+# Nothing required since it is initramfs and implicitly labeled
+# by genfscon rootfs in ocontexts.
+#
+##########################
+# Devices
+#
+/dev/kgsl-3d0		u:object_r:graphics_device:s0
+/dev/kgsl-2d0		u:object_r:graphics_device:s0
+/dev/kgsl-2d1		u:object_r:graphics_device:s0

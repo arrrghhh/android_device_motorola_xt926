@@ -1,0 +1,174 @@
+#============= adbd ==============
+allow adbd init:unix_stream_socket { read write accept listen };
+allow adbd system_data_file:file w_file_perms;
+allow adbd rootfs:file r_file_perms;
+allow adbd system_prop:property_service set;
+allow adbd tty_device:chr_file r_file_perms;
+allow adbd unlabeled:file rx_file_perms;
+allow adbd unlabeled:lnk_file r_file_perms;
+allow adbd kernel:system syslog_mod;
+allow adbd self:capability2 syslog;
+allow adbd cache_file:file w_file_perms;
+allow adbd self:capability { fowner fsetid };
+allow adbd tmpfs:file x_file_perms;
+allow adbd tty_device:chr_file w_file_perms;
+allow adbd unlabeled:dir r_dir_perms;
+allow adbd cache_file:file r_file_perms;
+allow adbd init:binder call;
+allow adbd cache_file:file create_file_perms;
+allow adbd system:binder { transfer call };
+
+#============= dhcp ==============
+allow dhcp devpts:chr_file w_file_perms;
+allow dhcp dhcp_data_file:file r_file_perms;
+allow dhcp self:rawip_socket { write create setopt };
+allow dhcp system_file:file x_file_perms;
+
+#============= init ==============
+allow init self:binder set_context_mgr;
+
+#============= installd ==============
+allow installd app_data_file:lnk_file create_file_perms;
+allow installd cache_file:dir w_dir_perms;
+allow installd cache_file:file w_file_perms;
+
+#============= mediaserver ==============
+allow mediaserver device:chr_file r_file_perms;
+allow mediaserver system:binder transfer;
+allow mediaserver unlabeled:file r_file_perms;
+allow mediaserver appdomain:binder transfer;
+
+#============= radio ==============
+allow radio cache_file:file r_file_perms;
+allow radio system_data_file:file w_file_perms;
+allow radio init:binder { transfer call };
+allow radio init_tmpfs:file r_file_perms;
+allow radio unlabeled:dir r_dir_perms;
+allow radio unlabeled:file r_file_perms;
+
+#============= rild ==============
+allow rild device:chr_file w_file_perms;
+allow rild device:sock_file create_file_perms;
+allow rild self:netlink_socket { write bind create read };
+allow rild self:socket { read write ioctl };
+
+#============= sdcardd ==============
+allow sdcardd unlabeled:dir r_dir_perms;
+allow sdcardd unlabeled:file r_file_perms;
+
+#============= shell ==============
+allow shell ctl_default_prop:property_service set;
+allow shell default_prop:property_service set;
+allow shell init:fifo_file r_file_perms;
+allow shell init:unix_stream_socket { connectto read write };
+allow shell rootfs:file r_file_perms;
+allow shell self:capability chown;
+allow shell sysfs:file create_file_perms;
+allow shell system_prop:property_service set;
+allow shell tmpfs:chr_file r_file_perms;
+
+#============= surfaceflinger ==============
+allow surfaceflinger device:chr_file r_file_perms;
+allow surfaceflinger sysfs:file w_file_perms;
+allow surfaceflinger system:binder transfer;
+allow surfaceflinger system_app:binder transfer;
+allow surfaceflinger system_app:fd use;
+allow surfaceflinger appdomain:binder transfer;
+allow surfaceflinger appdomain:fd use;
+
+#============= system ==============
+allow system init:unix_dgram_socket sendto;
+allow system servicemanager:binder transfer;
+allow system su:binder call;
+allow system zygote:binder call;
+allow system init:binder { transfer call };
+allow system init:process setsched;
+allow system init_tmpfs:file r_file_perms;
+allow system unlabeled:dir r_dir_perms;
+allow system unlabeled:file rx_file_perms;
+allow system adbd:binder call;
+allow system device:dir w_dir_perms;
+allow system device:sock_file create_file_perms;
+allow system init:unix_stream_socket { read write setopt };
+allow system unlabeled:file link_file_perms;
+
+#============= system_app ==============
+allow system_app device:chr_file r_file_perms;
+allow system_app sysfs:file w_file_perms;
+allow system_app init_tmpfs:file r_file_perms;
+allow system_app unlabeled:dir r_dir_perms;
+allow system_app unlabeled:file r_file_perms;
+allow system_app cache_file:file w_file_perms;
+allow system_app init:binder call;
+allow system_app cache_file:file r_file_perms;
+allow system_app cache_file:file create_file_perms;
+allow system_app device:chr_file w_file_perms;
+allow system_app init:binder transfer;
+allow system_app init:unix_stream_socket { read write setopt };
+allow system_app unlabeled:file x_file_perms;
+
+#============= ueventd ==============
+allow ueventd self:capability fowner;
+allow ueventd unlabeled:dir r_dir_perms;
+allow ueventd unlabeled:file r_file_perms;
+allow ueventd unlabeled:lnk_file r_file_perms;
+
+#============= appdomain ==============
+allow appdomain apk_tmp_file:file w_file_perms;
+allow appdomain app_data_file:file w_file_perms;
+allow appdomain cache_file:file r_file_perms;
+allow appdomain device:chr_file r_file_perms;
+allow appdomain mtp_device:chr_file r_file_perms;
+allow appdomain qtaguid_device:chr_file r_file_perms;
+allow appdomain qtaguid_proc:file w_file_perms;
+allow appdomain system_data_file:file x_file_perms;
+allow appdomain system_data_file:file x_file_perms;
+allow appdomain tmpfs:dir r_dir_perms;
+allow appdomain unlabeled:dir r_dir_perms;
+allow appdomain init:binder { transfer call };
+allow appdomain init:unix_stream_socket read;
+allow appdomain init_tmpfs:file r_file_perms;
+allow appdomain mtp_device:chr_file w_file_perms;
+allow appdomain system:unix_stream_socket setopt;
+allow appdomain unlabeled:lnk_file r_file_perms;
+allow appdomain init:unix_stream_socket { write connectto setopt };
+allow appdomain device:chr_file w_file_perms;
+allow appdomain apk_tmp_file:file r_file_perms;
+allow appdomain app_data_file:file w_file_perms;
+allow appdomain shell_data_file:dir r_dir_perms;
+allow appdomain system_data_file:file w_file_perms;
+allow appdomain log_device:chr_file r_file_perms;
+allow appdomain unlabeled:file r_file_perms;
+allow appdomain unlabeled:file w_file_perms;
+allow appdomain unlabeled:file x_file_perms;
+allow appdomain graphics_device:chr_file r_file_perms;
+allow untrusted_app device:chr_file w_file_perms;
+allow untrusted_app unlabeled:file r_file_perms;
+allow untrusted_app graphics_device:chr_file r_file_perms;
+allow untrusted_app apk_data_file:dir r_dir_perms;
+allow untrusted_app device:chr_file w_file_perms;
+allow untrusted_app device:dir create_dir_perms;
+allow untrusted_app device:sock_file link_file_perms;
+allow untrusted_app drm_data_file:dir r_dir_perms;
+allow untrusted_app graphics_device:chr_file w_file_perms;
+allow untrusted_app labeledfs:filesystem remount;
+allow untrusted_app rootfs:file r_file_perms;
+allow untrusted_app self:capability { setuid chown setgid dac_override };
+allow untrusted_app selinuxfs:dir r_dir_perms;
+allow untrusted_app system_data_file:file r_file_perms;
+allow untrusted_app system_prop:property_service set;
+allow untrusted_app tombstone_data_file:dir r_dir_perms;
+allow untrusted_app unlabeled:dir r_dir_perms;
+
+#============= wpa ==============
+allow wpa init:unix_dgram_socket { read write };
+
+#============= zygote ==============
+allow zygote default_prop:property_service set;
+allow zygote init:unix_stream_socket connectto;
+allow zygote property_socket:sock_file w_file_perms;
+allow zygote sdcard:dir create_dir_perms;
+allow zygote self:capability fsetid;
+allow zygote system_prop:property_service set;
+allow zygote tmpfs:dir create_dir_perms;
+allow zygote tmpfs:filesystem mount;
